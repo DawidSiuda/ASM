@@ -1,0 +1,2 @@
+gcc -g -o cw1 cw1.c cw1.s
+./cw1

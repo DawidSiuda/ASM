@@ -1,0 +1,398 @@
+
+;; Function main (main, funcdef_no=0, decl_uid=1868, cgraph_uid=0, symbol_order=0)
+
+main ()
+{
+  float out;
+  int D.1872;
+  double _1;
+  int _6;
+
+;;   basic block 2, loop depth 0
+;;    pred:       ENTRY
+  out_4 = fun (3.0e+0, 2.0e+0, 1.0e+0);
+  _1 = (double) out_4;
+  printf ("Output: %f\n", _1);
+  _6 = 0;
+;;    succ:       3
+
+;;   basic block 3, loop depth 0
+;;    pred:       2
+<L0> [0.00%]:
+  return _6;
+;;    succ:       EXIT
+
+}
+
+
+
+Partition map 
+
+Partition 1 (_1 - 1 )
+Partition 4 (out_4 - 4 )
+Partition 6 (_6 - 6 )
+Partition 7 (_7(D) - 7 )
+
+
+Partition map 
+
+Partition 0 (_7(D) - 7 )
+
+
+Conflict graph:
+
+After sorting:
+Coalesce List:
+
+Partition map 
+
+Partition 0 (_7(D) - 7 )
+
+After Coalescing:
+
+Partition map 
+
+Partition 0 (_1 - 1 )
+Partition 1 (out_4 - 4 )
+Partition 2 (_6 - 6 )
+Partition 3 (_7(D) - 7 )
+
+main ()
+{
+  float out;
+  int D.1872;
+  double _1;
+  int _6;
+
+;;   basic block 2, loop depth 0
+;;    pred:       ENTRY
+  out_4 = fun (3.0e+0, 2.0e+0, 1.0e+0);
+  _1 = (double) out_4;
+  printf ("Output: %f\n", _1);
+  _6 = 0;
+;;    succ:       3
+
+;;   basic block 3, loop depth 0
+;;    pred:       2
+<L0> [0.00%]:
+  return _6;
+;;    succ:       EXIT
+
+}
+
+
+Partition 0: size 4 align 4
+	out_4
+
+;; Generating RTL for gimple basic block 2
+
+;; out_4 = fun (3.0e+0, 2.0e+0, 1.0e+0);
+
+(insn 5 4 6 (parallel [
+            (set (reg/f:SI 7 sp)
+                (plus:SI (reg/f:SI 7 sp)
+                    (const_int -4 [0xfffffffffffffffc])))
+            (clobber (reg:CC 17 flags))
+        ]) "main.c":8 -1
+     (expr_list:REG_ARGS_SIZE (const_int 4 [0x4])
+        (nil)))
+
+(insn 6 5 7 (set (reg:SF 91)
+        (mem/u/c:SF (plus:SI (reg:SI 87)
+                (const:SI (unspec:SI [
+                            (symbol_ref/u:SI ("*.LC0") [flags 0x2])
+                        ] UNSPEC_GOTOFF))) [1  S4 A32])) "main.c":8 -1
+     (nil))
+
+(insn 7 6 8 (set (mem:SF (pre_dec:SI (reg/f:SI 7 sp)) [1  S4 A32])
+        (reg:SF 91)) "main.c":8 -1
+     (expr_list:REG_ARGS_SIZE (const_int 8 [0x8])
+        (nil)))
+
+(insn 8 7 9 (set (reg:SF 92)
+        (mem/u/c:SF (plus:SI (reg:SI 87)
+                (const:SI (unspec:SI [
+                            (symbol_ref/u:SI ("*.LC1") [flags 0x2])
+                        ] UNSPEC_GOTOFF))) [1  S4 A32])) "main.c":8 -1
+     (nil))
+
+(insn 9 8 10 (set (mem:SF (pre_dec:SI (reg/f:SI 7 sp)) [1  S4 A32])
+        (reg:SF 92)) "main.c":8 -1
+     (expr_list:REG_ARGS_SIZE (const_int 12 [0xc])
+        (nil)))
+
+(insn 10 9 11 (set (reg:SF 93)
+        (mem/u/c:SF (plus:SI (reg:SI 87)
+                (const:SI (unspec:SI [
+                            (symbol_ref/u:SI ("*.LC2") [flags 0x2])
+                        ] UNSPEC_GOTOFF))) [1  S4 A32])) "main.c":8 -1
+     (nil))
+
+(insn 11 10 12 (set (mem:SF (pre_dec:SI (reg/f:SI 7 sp)) [1  S4 A32])
+        (reg:SF 93)) "main.c":8 -1
+     (expr_list:REG_ARGS_SIZE (const_int 16 [0x10])
+        (nil)))
+
+(insn 12 11 13 (set (reg:SI 3 bx)
+        (reg:SI 87)) "main.c":8 -1
+     (nil))
+
+(call_insn 13 12 14 (set (reg:SF 8 st)
+        (call (mem:QI (symbol_ref:SI ("fun") [flags 0x41]  <function_decl 0x7fe4a1e04900 fun>) [0 fun S1 A8])
+            (const_int 16 [0x10]))) "main.c":8 -1
+     (nil)
+    (expr_list (use (reg:SI 3 bx))
+        (nil)))
+
+(insn 14 13 15 (parallel [
+            (set (reg/f:SI 7 sp)
+                (plus:SI (reg/f:SI 7 sp)
+                    (const_int 16 [0x10])))
+            (clobber (reg:CC 17 flags))
+        ]) "main.c":8 -1
+     (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+        (nil)))
+
+(insn 15 14 16 (set (reg:SF 94)
+        (reg:SF 8 st)) "main.c":8 -1
+     (nil))
+
+(insn 16 15 0 (set (mem/c:SF (plus:SI (reg/f:SI 82 virtual-stack-vars)
+                (const_int -4 [0xfffffffffffffffc])) [1 out+0 S4 A32])
+        (reg:SF 94)) "main.c":8 -1
+     (nil))
+
+;; _1 = (double) out_4;
+
+(insn 17 16 0 (set (reg:DF 88 [ _1 ])
+        (float_extend:DF (mem/c:SF (plus:SI (reg/f:SI 82 virtual-stack-vars)
+                    (const_int -4 [0xfffffffffffffffc])) [1 out+0 S4 A32]))) "main.c":10 -1
+     (nil))
+
+;; printf ("Output: %f\n", _1);
+
+(insn 18 17 19 (parallel [
+            (set (reg/f:SI 7 sp)
+                (plus:SI (reg/f:SI 7 sp)
+                    (const_int -4 [0xfffffffffffffffc])))
+            (clobber (reg:CC 17 flags))
+        ]) "main.c":10 -1
+     (expr_list:REG_ARGS_SIZE (const_int 4 [0x4])
+        (nil)))
+
+(insn 19 18 20 (set (mem:DF (pre_dec:SI (reg/f:SI 7 sp)) [2  S8 A64])
+        (reg:DF 88 [ _1 ])) "main.c":10 -1
+     (expr_list:REG_ARGS_SIZE (const_int 12 [0xc])
+        (nil)))
+
+(insn 20 19 21 (set (reg/f:SI 95)
+        (plus:SI (reg:SI 87)
+            (const:SI (unspec:SI [
+                        (symbol_ref/f:SI ("*.LC3") [flags 0x2]  <var_decl 0x7fe4a1dc4cf0 *.LC3>)
+                    ] UNSPEC_GOTOFF)))) "main.c":10 -1
+     (expr_list:REG_EQUAL (symbol_ref/f:SI ("*.LC3") [flags 0x2]  <var_decl 0x7fe4a1dc4cf0 *.LC3>)
+        (nil)))
+
+(insn 21 20 22 (set (mem/f:SI (pre_dec:SI (reg/f:SI 7 sp)) [3  S4 A32])
+        (reg/f:SI 95)) "main.c":10 -1
+     (expr_list:REG_ARGS_SIZE (const_int 16 [0x10])
+        (nil)))
+
+(insn 22 21 23 (set (reg:SI 3 bx)
+        (reg:SI 87)) "main.c":10 -1
+     (nil))
+
+(call_insn 23 22 24 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:SI ("printf") [flags 0x41]  <function_decl 0x7fe4a1d51f00 printf>) [0 __builtin_printf S1 A8])
+            (const_int 16 [0x10]))) "main.c":10 -1
+     (nil)
+    (expr_list (use (reg:SI 3 bx))
+        (nil)))
+
+(insn 24 23 0 (parallel [
+            (set (reg/f:SI 7 sp)
+                (plus:SI (reg/f:SI 7 sp)
+                    (const_int 16 [0x10])))
+            (clobber (reg:CC 17 flags))
+        ]) "main.c":10 -1
+     (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+        (nil)))
+
+;; _6 = 0;
+
+(insn 25 24 0 (set (reg:SI 89 [ _6 ])
+        (const_int 0 [0])) "main.c":12 -1
+     (nil))
+
+;; Generating RTL for gimple basic block 3
+
+;; <L0> [0.00%]:
+
+(code_label 26 25 27 2 (nil) [0 uses])
+
+(note 27 26 0 NOTE_INSN_BASIC_BLOCK)
+
+;; return _6;
+
+(insn 28 27 29 (set (reg:SI 90 [ <retval> ])
+        (reg:SI 89 [ _6 ])) -1
+     (nil))
+
+(jump_insn 29 28 30 (set (pc)
+        (label_ref 0)) -1
+     (nil))
+
+(barrier 30 29 0)
+
+
+try_optimize_cfg iteration 1
+
+Merging block 3 into block 2...
+Merged blocks 2 and 3.
+Merged 2 and 3 without moving.
+Merging block 4 into block 2...
+Merged blocks 2 and 4.
+Merged 2 and 4 without moving.
+Removing jump 29.
+Merging block 5 into block 2...
+Merged blocks 2 and 5.
+Merged 2 and 5 without moving.
+
+
+try_optimize_cfg iteration 2
+
+fix_loop_structure: fixing up loops for function
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 3 NOTE_INSN_DELETED)
+;; basic block 2, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 0, next block 1, flags: (NEW, REACHABLE, RTL)
+;;  pred:       ENTRY (FALLTHRU)
+(note 3 1 35 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(insn/f 35 3 2 2 (set (reg:SI 97)
+        (reg:SI 2 cx)) -1
+     (expr_list:REG_CFA_SET_VDRAP (reg:SI 97)
+        (nil)))
+(note 2 35 5 2 NOTE_INSN_FUNCTION_BEG)
+(insn 5 2 6 2 (parallel [
+            (set (reg/f:SI 7 sp)
+                (plus:SI (reg/f:SI 7 sp)
+                    (const_int -4 [0xfffffffffffffffc])))
+            (clobber (reg:CC 17 flags))
+        ]) "main.c":8 -1
+     (expr_list:REG_ARGS_SIZE (const_int 4 [0x4])
+        (nil)))
+(insn 6 5 7 2 (set (reg:SF 91)
+        (mem/u/c:SF (plus:SI (reg:SI 87)
+                (const:SI (unspec:SI [
+                            (symbol_ref/u:SI ("*.LC0") [flags 0x2])
+                        ] UNSPEC_GOTOFF))) [1  S4 A32])) "main.c":8 -1
+     (nil))
+(insn 7 6 8 2 (set (mem:SF (pre_dec:SI (reg/f:SI 7 sp)) [1  S4 A32])
+        (reg:SF 91)) "main.c":8 -1
+     (expr_list:REG_ARGS_SIZE (const_int 8 [0x8])
+        (nil)))
+(insn 8 7 9 2 (set (reg:SF 92)
+        (mem/u/c:SF (plus:SI (reg:SI 87)
+                (const:SI (unspec:SI [
+                            (symbol_ref/u:SI ("*.LC1") [flags 0x2])
+                        ] UNSPEC_GOTOFF))) [1  S4 A32])) "main.c":8 -1
+     (nil))
+(insn 9 8 10 2 (set (mem:SF (pre_dec:SI (reg/f:SI 7 sp)) [1  S4 A32])
+        (reg:SF 92)) "main.c":8 -1
+     (expr_list:REG_ARGS_SIZE (const_int 12 [0xc])
+        (nil)))
+(insn 10 9 11 2 (set (reg:SF 93)
+        (mem/u/c:SF (plus:SI (reg:SI 87)
+                (const:SI (unspec:SI [
+                            (symbol_ref/u:SI ("*.LC2") [flags 0x2])
+                        ] UNSPEC_GOTOFF))) [1  S4 A32])) "main.c":8 -1
+     (nil))
+(insn 11 10 12 2 (set (mem:SF (pre_dec:SI (reg/f:SI 7 sp)) [1  S4 A32])
+        (reg:SF 93)) "main.c":8 -1
+     (expr_list:REG_ARGS_SIZE (const_int 16 [0x10])
+        (nil)))
+(insn 12 11 13 2 (set (reg:SI 3 bx)
+        (reg:SI 87)) "main.c":8 -1
+     (nil))
+(call_insn 13 12 14 2 (set (reg:SF 8 st)
+        (call (mem:QI (symbol_ref:SI ("fun") [flags 0x41]  <function_decl 0x7fe4a1e04900 fun>) [0 fun S1 A8])
+            (const_int 16 [0x10]))) "main.c":8 -1
+     (nil)
+    (expr_list (use (reg:SI 3 bx))
+        (nil)))
+(insn 14 13 15 2 (parallel [
+            (set (reg/f:SI 7 sp)
+                (plus:SI (reg/f:SI 7 sp)
+                    (const_int 16 [0x10])))
+            (clobber (reg:CC 17 flags))
+        ]) "main.c":8 -1
+     (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+        (nil)))
+(insn 15 14 16 2 (set (reg:SF 94)
+        (reg:SF 8 st)) "main.c":8 -1
+     (nil))
+(insn 16 15 17 2 (set (mem/c:SF (plus:SI (reg/f:SI 82 virtual-stack-vars)
+                (const_int -4 [0xfffffffffffffffc])) [1 out+0 S4 A32])
+        (reg:SF 94)) "main.c":8 -1
+     (nil))
+(insn 17 16 18 2 (set (reg:DF 88 [ _1 ])
+        (float_extend:DF (mem/c:SF (plus:SI (reg/f:SI 82 virtual-stack-vars)
+                    (const_int -4 [0xfffffffffffffffc])) [1 out+0 S4 A32]))) "main.c":10 -1
+     (nil))
+(insn 18 17 19 2 (parallel [
+            (set (reg/f:SI 7 sp)
+                (plus:SI (reg/f:SI 7 sp)
+                    (const_int -4 [0xfffffffffffffffc])))
+            (clobber (reg:CC 17 flags))
+        ]) "main.c":10 -1
+     (expr_list:REG_ARGS_SIZE (const_int 4 [0x4])
+        (nil)))
+(insn 19 18 20 2 (set (mem:DF (pre_dec:SI (reg/f:SI 7 sp)) [2  S8 A64])
+        (reg:DF 88 [ _1 ])) "main.c":10 -1
+     (expr_list:REG_ARGS_SIZE (const_int 12 [0xc])
+        (nil)))
+(insn 20 19 21 2 (set (reg/f:SI 95)
+        (plus:SI (reg:SI 87)
+            (const:SI (unspec:SI [
+                        (symbol_ref/f:SI ("*.LC3") [flags 0x2]  <var_decl 0x7fe4a1dc4cf0 *.LC3>)
+                    ] UNSPEC_GOTOFF)))) "main.c":10 -1
+     (expr_list:REG_EQUAL (symbol_ref/f:SI ("*.LC3") [flags 0x2]  <var_decl 0x7fe4a1dc4cf0 *.LC3>)
+        (nil)))
+(insn 21 20 22 2 (set (mem/f:SI (pre_dec:SI (reg/f:SI 7 sp)) [3  S4 A32])
+        (reg/f:SI 95)) "main.c":10 -1
+     (expr_list:REG_ARGS_SIZE (const_int 16 [0x10])
+        (nil)))
+(insn 22 21 23 2 (set (reg:SI 3 bx)
+        (reg:SI 87)) "main.c":10 -1
+     (nil))
+(call_insn 23 22 24 2 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:SI ("printf") [flags 0x41]  <function_decl 0x7fe4a1d51f00 printf>) [0 __builtin_printf S1 A8])
+            (const_int 16 [0x10]))) "main.c":10 -1
+     (nil)
+    (expr_list (use (reg:SI 3 bx))
+        (nil)))
+(insn 24 23 25 2 (parallel [
+            (set (reg/f:SI 7 sp)
+                (plus:SI (reg/f:SI 7 sp)
+                    (const_int 16 [0x10])))
+            (clobber (reg:CC 17 flags))
+        ]) "main.c":10 -1
+     (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+        (nil)))
+(insn 25 24 28 2 (set (reg:SI 89 [ _6 ])
+        (const_int 0 [0])) "main.c":12 -1
+     (nil))
+(insn 28 25 32 2 (set (reg:SI 90 [ <retval> ])
+        (reg:SI 89 [ _6 ])) -1
+     (nil))
+(insn 32 28 33 2 (set (reg/i:SI 0 ax)
+        (reg:SI 90 [ <retval> ])) "main.c":13 -1
+     (nil))
+(insn 33 32 0 2 (use (reg/i:SI 0 ax)) "main.c":13 -1
+     (nil))
+;;  succ:       EXIT [100.0%]  (FALLTHRU)
+
